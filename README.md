@@ -40,5 +40,5 @@ Licensed under the GNU General Public License, Version 3.0: https://www.gnu.org/
 ## Reference
 
 Rossi, C., and Gholizadeh, H. (2022). Subpixel spectral diversity: Using endmember diversity to capture plant diversity.
-#' submitted to Methods in Ecology and Evolution.
+submitted to Methods in Ecology and Evolution.
 
