@@ -4,7 +4,7 @@ Title: Spectral unmixing functions for multi- and hyperspectral data
 Version: 0.1.0
 Author: Christian Rossi
 Maintainer: Christian Rossi <christian.rossi1990@gmail.com>
-Description: Allows to identify the number and endmembers in a multispectral or hyperspectral image, perfom spectral unmixing and
+Description: Allows to identify the number and extract the endmembers in a multispectral or hyperspectral image, perfoms spectral unmixing and
              endmember diversity per pixel.
 License: GPL-3
 Encoding: UTF-8
