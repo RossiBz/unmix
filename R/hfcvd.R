@@ -85,7 +85,7 @@ hfcvd <- function(x, noisewhiten, far)
   {
     # Noise Whiten the data
 
-    # Covariance matix
+    # Covariance matrix
     covMatrix <- cova(Ma)
 
     # Inverse covariance matix
