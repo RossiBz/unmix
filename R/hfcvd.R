@@ -5,7 +5,7 @@
 #' Finds the number of endmembers present in a multispectral or hyperspectral image by using the noise-whitened Harsanyi–Farrand–Chang (NWHFC) method.
 #'
 #' @param x RasterStack, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral),
-#' @param noisewithen Logical. If TRUE, performs noise-whitening before computing the number of endmembers.
+#' @param noisewhiten Logical. If TRUE, performs noise-whitening before computing the number of endmembers.
 #' FALSE consist in the Harsanyi–Farrand–Chang (HFC) method. By default TRUE.
 #' @param far  Positive integer.  Probability of false alarm . By default 10^-3
 #'
@@ -33,7 +33,7 @@
 
 
 
-hfcvd <- function(x, noisewithen, far)
+hfcvd <- function(x, noisewhiten, far)
 
 {
   if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix") {
