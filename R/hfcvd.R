@@ -18,7 +18,7 @@
 #' @import Rfast
 #' @import stats
 #'
-#' @usage hfcvd(x,noisewithen, far)
+#' @usage hfcvd(x,noisewhiten, far)
 #'
 #' @references C.-I. Chang and Q. Du, "Estimation of number of spectrally distinct
 #' signal sources in hyperspectral imagery," IEEE Transactions on Geoscience and Remote Sensing, vol. 43, no. 3, mar 2004.
