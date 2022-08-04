@@ -63,7 +63,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
     #transfrom raster in matrix remove NA
     Ma <- stats::na.omit(as.matrix(x))
   } else{
-    Ma <- stats::na.omit(transpose(x))
+    Ma <- stats::na.omit(Rfast::transpose(x))
   }
 
 
@@ -115,7 +115,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
 
     # Second rotation by principal components.
     R <-
-      Rfast::transpose(prcomp(
+      Rfast::transpose(stats::prcomp(
         Rfast::transpose(cube),
         rank. = q,
         center = FALSE

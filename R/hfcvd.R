@@ -98,7 +98,7 @@ hfcvd <- function(x, noisewhiten, far)
     # Noise covariance matrix
     noiseCovMatrix <- diag(1 / zeta)
     # Noise whitening
-    I <- Rfast::mat.mult(Ma, sqrtm(noiseCovMatrix)$Binv)
+    I <- Rfast::mat.mult(Ma, pracma::sqrtm(noiseCovMatrix)$Binv)
   } else{
     I <- Ma
   }
@@ -120,7 +120,7 @@ hfcvd <- function(x, noisewhiten, far)
   variance <- (2 / N) * (lambda_corr ^ 2 + lambda_cov ^ 2)
 
   # Binary hypothesis test
-  tau <- sqrt(2 * variance) * pramca::erfcinv(2 * far)
+  tau <- sqrt(2 * variance) * pracma::erfcinv(2 * far)
 
   numEndmembers <- sum(diff > tau)
 
