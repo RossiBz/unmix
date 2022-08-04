@@ -44,7 +44,7 @@ hysime <- function(x, noisetype)
   if (class(x)[1] == "RasterStack")
   {
     #transfrom raster in matrix remove NA
-    Ma <- transpose(na.omit(as.matrix(x)))
+    Ma <- Rfast::transpose(stats::na.omit(as.matrix(x)))
   } else{
     Ma <-x[ , colSums(is.na(x)) == 0]
   }
@@ -66,8 +66,8 @@ hysime <- function(x, noisetype)
     small <- 1e-6
 
     w <- matrix(ncol = N, nrow = p, 0)
-    RR <- Tcrossprod(r, r)
-    RRi <- inv(RR + small * eye(p))
+    RR <- Rfast::Tcrossprod(r, r)
+    RRi <- pracma::inv(RR + small * pracma::eye(p))
 
     for (i in 1:p)
     {
@@ -80,7 +80,7 @@ hysime <- function(x, noisetype)
 
     }
 
-    Rw <- diag(diag(Tcrossprod(w, w) / N))
+    Rw <- diag(diag(Rfast::Tcrossprod(w, w) / N))
 
     return(list(w, Rw))
 
@@ -96,7 +96,7 @@ hysime <- function(x, noisetype)
     u_Ru_p <- estAdditiveNoise(sqy)   # noise estimates
     x <- (sqy - u_Ru_p[[1]]) ^ 2                #signal estimates
     u_Ru[[1]] <- sqrt(x) * u_Ru_p[[1]] * 2
-    u_Ru[[2]] <- Tcrossprod(u_Ru[[1]], u_Ru[[1]]) / N
+    u_Ru[[2]] <- Rfast::Tcrossprod(u_Ru[[1]], u_Ru[[1]]) / N
   } else if (noisetype == "additive") {
     u_Ru <- estAdditiveNoise(Ma) # noise estimates
 
@@ -107,15 +107,15 @@ hysime <- function(x, noisetype)
 
   x <- Ma - u_Ru[[1]]
 
-  Ry <- Tcrossprod(Ma, Ma) / N   # sample correlation matrix
-  Rx <- Tcrossprod(x, x) / N  # signal correlation matrix estimates
+  Ry <- Rfast::Tcrossprod(Ma, Ma) / N   # sample correlation matrix
+  Rx <- Rfast::Tcrossprod(x, x) / N  # signal correlation matrix estimates
 
   #Computing the eigen vectors of the signal correlation matrix
   E_D <- svd(Rx)
   dx <- E_D$d
 
   #Estimating the number of endmembers
-  Rn <- u_Ru[[2]] + sum(diag(Rx)) / p / 10 ^ 5 * eye(p)
+  Rn <- u_Ru[[2]] + sum(diag(Rx)) / p / 10 ^ 5 * pracma::eye(p)
 
   Py <- diag(t(E_D$u) %*% Ry %*% E_D$u)
   Pn <- diag(t(E_D$u) %*% Rn %*% E_D$u)
