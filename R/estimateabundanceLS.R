@@ -41,7 +41,7 @@ estimateabundanceLS <- function(x, endmembers, method)
    {
       Ma <- as.matrix(x)
    } else if (class(x)[1] == "matrix") {
-      Ma <- transpose(x)
+      Ma <- Rfast::transpose(x)
    } else {
       stop("x is not a matrix or raster")
    }
@@ -66,7 +66,7 @@ estimateabundanceLS <- function(x, endmembers, method)
 
    if (method == "ucls")
    {
-      sigInv <- pinv(endmembers)
+      sigInv <- pracma::pinv(endmembers)
       for (i in 1:N)
       {
          if (anyNA(Ma[i, ]))
@@ -85,7 +85,7 @@ estimateabundanceLS <- function(x, endmembers, method)
             abundanceMapTemp[, i] <- NA
          } else {
             abundanceMapTemp[, i] <-
-               lsqlincon(endmembers / 10000,
+               pracma::lsqlincon(endmembers / 10000,
                          Ma[i,] / 10000,
                          lb = 0,
                          ub = 1)
@@ -104,7 +104,7 @@ estimateabundanceLS <- function(x, endmembers, method)
             abundanceMapTemp[, i] <- NA
          } else {
             abundanceMapTemp[, i] <-
-               lsqlincon(
+               pracma::lsqlincon(
                   endmembers / 10000,
                   Ma[i, ] / 10000,
                   lb = 0,
@@ -124,7 +124,7 @@ estimateabundanceLS <- function(x, endmembers, method)
    {
       x <- x[[1:q]]
 
-      values(x) <-  transpose(abundanceMapTemp)
+      values(x) <-  Rfast::transpose(abundanceMapTemp)
 
       names(x) <- rep("endmember", q)
 

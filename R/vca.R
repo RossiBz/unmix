@@ -42,7 +42,7 @@ vca <- function(x, q) {
   if (class(x)[1] == "RasterStack")
   {
     #transfrom raster in matrix remove NA
-    R <- transpose(na.omit(as.matrix(x)))
+    R <- Rfast::transpose(stats::na.omit(as.matrix(x)))
   } else{
     R <-x[ , colSums(is.na(x)) == 0]
   }
@@ -56,9 +56,9 @@ vca <- function(x, q) {
   #SNR estimates --------------------------------------------------------------
   R_o <- R - rowmeans(R)[row(R)]       # data with zero-mean
   D <-
-    svds(Tcrossprod(R_o, R_o) / N, q)    # computes the p-projection matrix
+    svds(Rfast::Tcrossprod(R_o, R_o) / N, q)    # computes the p-projection matrix
   x_p <-
-    Crossprod(D$u, R_o)                 # project the zero-mean data onto p-subspace
+    Rfast::Crossprod(D$u, R_o)                 # project the zero-mean data onto p-subspace
 
 
   r_m <- rowmeans(R)
@@ -79,7 +79,7 @@ vca <- function(x, q) {
     Ud <- D$u[, 1:d]
 
     Rp <-
-      mat.mult(Ud, x_p[1:d, ]) + rowmeans(R)[row(R)]     # again in dimension L
+      Rfast::mat.mult(Ud, x_p[1:d, ]) + rowmeans(R)[row(R)]     # again in dimension L
 
     x_ <- x_p[1:d, ]
     c <- max(colSums(x_ ^ 2)) ^ 0.5
@@ -88,11 +88,11 @@ vca <- function(x, q) {
   } else{
     d <- q
     D <-
-      svds(Tcrossprod(R, R) / N, d)         # computes the p-projection matrix
+      RSpectra::svds(Rfast::Tcrossprod(R, R) / N, d)         # computes the p-projection matrix
 
-    x_ <-  Crossprod(D$u, R)
+    x_ <-  Rfast::Crossprod(D$u, R)
     Rp <-
-      mat.mult(D$u, x_[1:d, ])     # again in dimension L (note that x_p has no null mean)
+      Rfast::mat.mult(D$u, x_[1:d, ])     # again in dimension L (note that x_p has no null mean)
 
     u <- matrix(colSums(x_ * rowmeans(x_)), nrow = 1)
 
@@ -114,11 +114,11 @@ vca <- function(x, q) {
 
   for (i in 1:q)
   {
-    w <- rand(q, 1)
-    f <- w - A %*% pinv(A) %*% w
+    w <- pracma::rand(q, 1)
+    f <- w - A %*% pracma::pinv(A) %*% w
     f <- f / sqrt(sum(f ^ 2))
 
-    v <- Crossprod(f, y)
+    v <- Rfast::Crossprod(f, y)
 
     indice[i] <- which.max(abs(v))
 

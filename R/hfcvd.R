@@ -70,9 +70,9 @@ hfcvd <- function(x, noisewhiten, far)
   if (class(x)[1] == "RasterStack")
   {
     #transfrom raster in matrix remove NA
-    Ma <- na.omit(as.matrix(x))
+    Ma <- stats::na.omit(as.matrix(x))
   } else{
-    Ma <- na.omit(transpose(x))
+    Ma <- stats::na.omit(Rfast::transpose(x))
   }
 
 
@@ -86,10 +86,10 @@ hfcvd <- function(x, noisewhiten, far)
     # Noise Whiten the data
 
     # Covariance matrix
-    covMatrix <- cova(Ma)
+    covMatrix <- Rfast::cova(Ma)
 
     # Inverse covariance matix
-    invCovMatrix <- inv(covMatrix)
+    invCovMatrix <- pracma::inv(covMatrix)
 
 
     # Diagonal elements of inverse covariance matrix
@@ -98,7 +98,7 @@ hfcvd <- function(x, noisewhiten, far)
     # Noise covariance matrix
     noiseCovMatrix <- diag(1 / zeta)
     # Noise whitening
-    I <- mat.mult(Ma, sqrtm(noiseCovMatrix)$Binv)
+    I <- Rfast::mat.mult(Ma, sqrtm(noiseCovMatrix)$Binv)
   } else{
     I <- Ma
   }
@@ -107,9 +107,9 @@ hfcvd <- function(x, noisewhiten, far)
 
   # calculate eigenvalues of covariance and correlation between bands
   lambda_cov <-
-    sort(eigen(cova(I), only.values = TRUE)$values, decreasing = TRUE)
+    sort(eigen(Rfast::cova(I), only.values = TRUE)$values, decreasing = TRUE)
   lambda_corr <-
-    sort(eigen(Crossprod(I, I) / N, only.values = TRUE)$values, decreasing =
+    sort(eigen(Rfast::Crossprod(I, I) / N, only.values = TRUE)$values, decreasing =
            TRUE)
 
 
@@ -120,7 +120,7 @@ hfcvd <- function(x, noisewhiten, far)
   variance <- (2 / N) * (lambda_corr ^ 2 + lambda_cov ^ 2)
 
   # Binary hypothesis test
-  tau <- sqrt(2 * variance) * erfcinv(2 * far)
+  tau <- sqrt(2 * variance) * pramca::erfcinv(2 * far)
 
   numEndmembers <- sum(diff > tau)
 

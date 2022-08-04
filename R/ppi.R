@@ -61,9 +61,9 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
   if (class(x)[1] == "RasterStack")
   {
     #transfrom raster in matrix remove NA
-    Ma <- na.omit(as.matrix(x))
+    Ma <- stats::na.omit(as.matrix(x))
   } else{
-    Ma <- na.omit(transpose(x))
+    Ma <- stats::na.omit(transpose(x))
   }
 
 
@@ -77,14 +77,14 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
   if (reductionmethod == "PCA")
   {
     #Principal component ------------------
-    R <- transpose(prcomp(Ma, rank. = q)$x)
+    R <- Rfast::transpose(stats::prcomp(Ma, rank. = q)$x)
 
   } else if (reductionmethod == "MNF") {
     #Minimum Noise Fraction ------------------
 
     # Find the covariance of the noise.
 
-    V <- svd(cova(base::diff(Ma)))
+    V <- svd(Rfast::cova(base::diff(Ma)))
 
 
     # Consider only nonzero eigen values
@@ -102,7 +102,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
       noiseWhitening <- Rfast::transpose(V$u)
 
       # Consider only non zero eigen values.
-      nonzeroRotations <- solve(t(sqrt(diag(U))),
+      nonzeroRotations <- base::solve(t(sqrt(diag(U))),
                                 noiseWhitening[1:getNonZeros, 1:getNonZeros])
       noiseWhitening[1:getNonZeros, 1:getNonZeros] <-
         nonzeroRotations
@@ -111,7 +111,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
     # Get the noise adjusted data.
 
 
-    cube <-  Tcrossprod(noiseWhitening, Ma - colmeans(Ma)[col(Ma)])
+    cube <-  Rfast::Tcrossprod(noiseWhitening, Ma - colmeans(Ma)[col(Ma)])
 
     # Second rotation by principal components.
     R <-
@@ -124,7 +124,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
   } else if (reductionmethod == "None") {
     #no reduction method ----------------------
 
-    R <- transpose(Ma)
+    R <- Rfast::transpose(Ma)
 
   } else {
     stop("reductionmethod is not valid")
@@ -141,7 +141,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
   N <- dim(R)[2]
 
   # Generate random unit vectors.
-  skewers <- randn(numSkewers, p)
+  skewers <- pracma::randn(numSkewers, p)
 
 
   votes <- rep(0, N)
