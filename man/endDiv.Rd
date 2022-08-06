@@ -7,10 +7,10 @@
 endDiv(x)
 }
 \arguments{
-\item{x}{RasterStack.  Each layer displays the abundance map of an endmember.}
+\item{x}{RasterStack, RasterBrick.  Each layer displays the abundance map of an endmember.}
 }
 \value{
-Endmember diversity per pixel as RasterStack. The four layers include Richness, Shannon-Weaver index, Simpson index and Evenness 
+Endmember diversity per pixel as RasterBrick. The four layers include Richness, Shannon-Weaver index, Simpson index and Evenness
 calculated based on the endmember abundance map
 }
 \description{

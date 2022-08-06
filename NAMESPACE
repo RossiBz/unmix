@@ -8,7 +8,9 @@ export(ppi)
 export(vca)
 import(RSpectra)
 import(Rfast)
-import(pracma)
+import(pracma, except = c(Norm,squareform,Rank))
 import(raster)
-import(stats)
-import(vegan)
+import(stats, except = c(predict,density,weighted.mean,aggregate,quantile,update))
+
+import(vegan, except = procrustes)
+

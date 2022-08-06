@@ -4,12 +4,12 @@
 \alias{hfcvd}
 \title{Noise-whitened Harsanyi–Farrand–Chang method}
 \usage{
-hfcvd(x,noisewithen, far)
+hfcvd(x,noisewhiten, far)
 }
 \arguments{
 \item{x}{RasterStack, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral),}
 
-\item{noisewithen}{Logical. If TRUE, performs noise-whitening before computing the number of endmembers.
+\item{noisewhiten}{Logical. If TRUE, performs noise-whitening before computing the number of endmembers.
 FALSE consist in the Harsanyi–Farrand–Chang (HFC) method. By default TRUE.}
 
 \item{far}{Positive integer.  Probability of false alarm . By default 10^-3}

@@ -4,15 +4,15 @@
 #'
 #' Calculates different diversity indices for each pixel based on the endmember abundance map.
 #'
-#' @param x RasterStack.  Each layer displays the abundance map of an endmember.
+#' @param x RasterStack, RasterBrick.  Each layer displays the abundance map of an endmember.
 #'
-#' @return Endmember diversity per pixel as RasterStack. The four layers include Richness, Shannon-Weaver index, Simpson index and Evenness
+#' @return Endmember diversity per pixel as RasterBrick. The four layers include Richness, Shannon-Weaver index, Simpson index and Evenness
 #' calculated based on the endmember abundance map
 #'
 #' @author Christian Rossi christian.rossi1990@gmail.com
 #'
 #' @import raster
-#' @import vegan
+#' @rawNamespace import(vegan, except = procrustes)
 #'
 #' @usage endDiv(x)
 #'
@@ -29,9 +29,9 @@
 endDiv <- function(x)
 
 {
-  if (class(x)[1] != "RasterStack")
+  if (class(x)[1] != "RasterStack" | class(x)[1] !="RasterBrick")
   {
-    stop("x is not RasterStack")
+    stop("x is not RasterStack or RasterBrick")
   }
 
 

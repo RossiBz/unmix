@@ -15,7 +15,7 @@
 #' @author Christian Rossi christian.rossi1990@gmail.com
 #'
 #' @import raster
-#' @import pracma
+#' @rawNamespace import(pracma, except = c(Norm,squareform,Rank))
 #' @import Rfast
 #'
 #' @usage estimateabundanceLS(x,endmembers, method)
@@ -85,8 +85,8 @@ estimateabundanceLS <- function(x, endmembers, method)
             abundanceMapTemp[, i] <- NA
          } else {
             abundanceMapTemp[, i] <-
-               pracma::lsqlincon(endmembers / 10000,
-                         Ma[i,] / 10000,
+               pracma::lsqlincon(endmembers,
+                         Ma[i,],
                          lb = 0,
                          ub = 1)
          }
@@ -105,12 +105,12 @@ estimateabundanceLS <- function(x, endmembers, method)
          } else {
             abundanceMapTemp[, i] <-
                pracma::lsqlincon(
-                  endmembers / 10000,
-                  Ma[i, ] / 10000,
+                  endmembers,
+                  Ma[i, ],
                   lb = 0,
                   ub = 1,
-                  b = 1,
-                  A = matrix(ncol = q, nrow = 1, 1)
+                  beq = 1,
+                  Aeq = matrix(ncol = q, nrow = 1, 1)
                )
          }
       }

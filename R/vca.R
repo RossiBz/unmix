@@ -11,10 +11,10 @@
 #' @author Christian Rossi christian.rossi1990@gmail.com
 #'
 #' @import raster
-#' @import pracma
+#' @rawNamespace import(pracma, except = c(Norm,squareform,Rank))
 #' @import RSpectra
 #' @import Rfast
-#' @import stats
+#' @rawNamespace import(stats, except = c(predict,density,weighted.mean,aggregate,quantile,update))
 #'
 #' @usage vca(x, q)
 #'
@@ -32,7 +32,7 @@ vca <- function(x, q) {
     stop("x is not a matrix or raster")
   }
 
-  if (class(q)[1] == "numeric" && q > 0) {
+  if (class(q)[1] == "integer" && q > 0) {
     q <- q
   } else{
     stop("q is not a positive integer")

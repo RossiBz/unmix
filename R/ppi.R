@@ -15,9 +15,9 @@
 #' @author Christian Rossi christian.rossi1990@gmail.com
 #'
 #' @import raster
-#' @import pracma
+#' @rawNamespace import(pracma, except = c(Norm,squareform,Rank))
 #' @import Rfast
-#' @import stats
+#' @rawNamespace import(stats, except = c(predict,density,weighted.mean,aggregate,quantile,update))
 #'
 #' @usage ppi(x, q, numSkewers, reductionmethod)
 #'
@@ -37,7 +37,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
     stop("x is not a matrix or raster")
   }
 
-  if (class(q)[1] == "numeric" && q > 0) {
+  if (class(q)[1] == "integer" && q > 0) {
     q <- q
   } else{
     stop("q is not a positive integer")
@@ -45,11 +45,11 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
 
   if (missing(numSkewers))
   {
-    numSkewers <- 10 ^ 4 #default
+    numSkewers <- as.integer(10 ^ 4) #default
   }
 
 
-  if (class(numSkewers)[1] == "numeric" &&
+  if (class(numSkewers)[1] == "integer" &&
       numSkewers > 0) {
     numSkewers <- numSkewers
   } else{
@@ -84,6 +84,8 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
 
     # Find the covariance of the noise.
 
+
+
     V <- svd(Rfast::cova(base::diff(Ma)))
 
 
@@ -102,8 +104,10 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
       noiseWhitening <- Rfast::transpose(V$u)
 
       # Consider only non zero eigen values.
-      nonzeroRotations <- base::solve(t(sqrt(diag(U))),
+      nonzeroRotations <- Matrix::solve(t(sqrt(diag(U))),
                                 noiseWhitening[1:getNonZeros, 1:getNonZeros])
+
+
       noiseWhitening[1:getNonZeros, 1:getNonZeros] <-
         nonzeroRotations
     }
@@ -141,6 +145,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
   N <- dim(R)[2]
 
   # Generate random unit vectors.
+
   skewers <- pracma::randn(numSkewers, p)
 
 

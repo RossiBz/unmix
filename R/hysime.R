@@ -14,9 +14,9 @@
 #' @author Christian Rossi christian.rossi1990@gmail.com
 #'
 #' @import raster
-#' @import pracma
+#' @rawNamespace import(pracma, except = c(Norm,squareform,Rank))
 #' @import Rfast
-#' @import stats
+#' @rawNamespace import(stats, except = c(predict,density,weighted.mean,aggregate,quantile,update))
 #'
 #' @usage hysime(x, noisetype)
 #'
