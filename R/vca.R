@@ -28,18 +28,18 @@
 
 
 vca <- function(x, q) {
-  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix") {
+  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
-  if (class(q)[1] == "integer" && q > 0) {
+  if (is.integer(q) && q > 0) {
     q <- q
   } else{
     stop("q is not a positive integer")
   }
 
 
-  if (class(x)[1] == "RasterStack")
+  if (class(x)[1] == "RasterStack" | class(x)[1] =="RasterBrick")
   {
     #transfrom raster in matrix remove NA
     R <- Rfast::transpose(stats::na.omit(as.matrix(x)))
