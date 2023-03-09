@@ -5,7 +5,7 @@
 #'
 #' Estimates abundance maps  from an image and a set of endmember spectral signatures using least square method.
 #'
-#' @param x RasterStack, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral),
+#' @param x RasterStack, RasterBrick, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral),
 #' @param endmembers Matrix with dimensions L(bands) x q (endmembers)
 #' @param method  Character. Specifies the least-squares method to use for estimating the abundance maps. By default Fully constrained least-squares method "fcls".
 #' Other options are Unconstrained least-squares method "ucls" and 'Nonnegative constrained least-squares method "ncls".
