@@ -42,7 +42,7 @@ endDiv <- function(x)
       #taxonomic diversity
       Richness_endm <- vegan::specnumber(y)
       Shannon_weaver_endm <- vegan::diversity(y)
-      Simpson_endm <- vegan::diversity(y, index = "simpson")
+      Simpson_endm <- vegan::diversity(y, index = "invsimpson")
       Eveness_endm <- Shannon_weaver_endm / log(Richness_endm)
 
       cbind(Richness_endm,
