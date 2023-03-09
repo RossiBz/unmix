@@ -16,8 +16,8 @@
 #'
 #' @usage endDiv(x)
 #'
-#' @references Rossi, C., and Gholizadeh, H. (2022). Subpixel spectral diversity: Using endmember diversity to capture plant diversity.
-#' submitted to Methods in Ecology and Evolution.
+#' @references Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveraging sub-pixel spectral diversity to estimate plant diversity from space.
+#' submitted to Remote Sensing of Environment
 #
 #'
 #'
