@@ -33,11 +33,11 @@
 
 
 ppi <- function(x, q, numSkewers, reductionmethod) {
-  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix") {
+  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
-  if (class(q)[1] == "integer" && q > 0) {
+  if (is.integer(q) && q > 0) {
     q <- q
   } else{
     stop("q is not a positive integer")
@@ -49,7 +49,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
   }
 
 
-  if (class(numSkewers)[1] == "integer" &&
+  if (is.integer(numSkewers) &&
       numSkewers > 0) {
     numSkewers <- numSkewers
   } else{
@@ -58,7 +58,7 @@ ppi <- function(x, q, numSkewers, reductionmethod) {
 
 
 
-  if (class(x)[1] == "RasterStack")
+  if (class(x)[1] == "RasterStack" | class(x)[1] =="RasterBrick")
   {
     #transfrom raster in matrix remove NA
     Ma <- stats::na.omit(as.matrix(x))
