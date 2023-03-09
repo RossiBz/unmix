@@ -5,7 +5,7 @@
 #'
 #' Hyperspectral signal subspace estimation to find the number of endmembers present in a multispectral or hyperspectral image
 #'
-#' @param x RasterStack, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral).
+#' @param x RasterStack, RasterBrick, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral).
 #' @param noisetype Character. Infers the noise in a image, by assuming that the reflectance at a given band is well modelled by
 #' a linear regression on the remaining bands. By default the noise type is "additive". Other option is "poisson".
 #'
