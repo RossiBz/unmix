@@ -4,7 +4,7 @@
 #'
 #' Extracts endmember signatures from multispectral or hyperspectral image by using the pixel purity index (PPI) algorithm.
 #'
-#' @param x RasterStack, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral),
+#' @param x RasterStack, RasterBrick, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral),
 #' @param q Positive integer. number of endmembers in the scene
 #' @param numSkewers  Positive integer. Number of randomly generated unit vectors to be used for projection. By default 10^4
 #' @param reductionmethod  Character. Select a dimensionality reduction method. By default maximum noise fraction "MNF". Other options are
