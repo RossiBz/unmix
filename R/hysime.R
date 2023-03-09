@@ -31,7 +31,7 @@
 hysime <- function(x, noisetype)
 
 {
-  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix") {
+  if if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
@@ -41,7 +41,7 @@ hysime <- function(x, noisetype)
   }
 
 
-  if (class(x)[1] == "RasterStack")
+  if (class(x)[1] == "RasterStack" | class(x)[1] =="RasterBrick")
   {
     #transfrom raster in matrix remove NA
     Ma <- Rfast::transpose(stats::na.omit(as.matrix(x)))
