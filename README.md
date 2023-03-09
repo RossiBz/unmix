@@ -7,7 +7,7 @@ The packages include state of the art endmember extraction algortihms like the P
 In addition it allows to find the number of endmembers present in a hyperspectral data cube by using Harsanyi–Farrand–Chang (NWHFC) or HySime method.
 Furthermore, spectral unmixing per pixel can be performed,  which is the decomposition of the spectra of each pixel into a given set of endmember spectra.
 Finally, the endmember diversity, i.e. subpixel spectral diveristy, per pixel can be calculated based on different diversity indices (i.e., Richness, Shannon-Weaver, Simpson and Evenness) 
-as proposed by Rossi and Gholizadeh (2022).
+as proposed by Rossi and Gholizadeh (2023).
 
 
 ## Main features
@@ -39,6 +39,5 @@ Licensed under the GNU General Public License, Version 3.0: https://www.gnu.org/
 
 ## Reference
 
-Rossi, C., and Gholizadeh, H. (2022). Spectral diversity of a pixel: Using endmember diversity to capture plant diversity.
-submitted to Methods in Ecology and Evolution.
+Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveraging sub-pixel spectral diversity to estimate plant diversity from space. Submitted to Remote Sensing of Environment.
 
