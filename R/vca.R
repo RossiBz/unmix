@@ -3,7 +3,7 @@
 #'
 #' Extracts endmember signatures from multispectral or hyperspectral image by using the Vertex Component Analysis method (VCA).
 #'
-#' @param x RasterStack, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral).
+#' @param x RasterStack, RasterBrick, matrix with dimensions L(bands) x N(pixels). Remote sensing imagery (usually hyperspectral).
 #' @param q Positive integer. number of endmembers in the scene
 #'
 #' @return Estimated mixing matrix (endmembers signatures)
