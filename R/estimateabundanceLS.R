@@ -37,7 +37,7 @@
 
 estimateabundanceLS <- function(x, endmembers, method)
 {
-   if (class(x)[1] == "RasterStack" | class(x)[1] =="RasterBrick")
+   if (class(x)[1] == "RasterStack" &  class(x)[1] =="RasterBrick")
    {
       Ma <- as.matrix(x)
    } else if (class(x)[1] == "matrix") {
