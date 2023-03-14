@@ -28,11 +28,11 @@
 
 
 vca <- function(x, q) {
-  if (class(x)[1] != "RasterStack" & class(x)[1] != "matrix" & class(x)[1] !="RasterBrick") {
+  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
-  if (is.integer(q) & q > 0) {
+  if (is.integer(q) && q > 0) {
     q <- q
   } else{
     stop("q is not a positive integer")
