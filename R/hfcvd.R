@@ -36,7 +36,7 @@
 hfcvd <- function(x, noisewhiten, far)
 
 {
-  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
+  if (class(x)[1] != "RasterStack" & class(x)[1] != "matrix" & class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
