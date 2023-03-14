@@ -29,7 +29,7 @@
 endDiv <- function(x)
 
 {
-  if (class(x)[1] != "RasterStack" | class(x)[1] !="RasterBrick")
+  if (class(x)[1] != "RasterStack" & class(x)[1] !="RasterBrick")
   {
     stop("x is not RasterStack or RasterBrick")
   }
