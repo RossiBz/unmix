@@ -36,7 +36,7 @@
 hfcvd <- function(x, noisewhiten, far)
 
 {
-  if (class(x)[1] != "RasterStack" & class(x)[1] != "matrix" & class(x)[1] !="RasterBrick") {
+  if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
@@ -51,7 +51,7 @@ hfcvd <- function(x, noisewhiten, far)
   }
 
 
-  if (class(far)[1] == "numeric" & far > 0 & far <= 1) {
+  if (class(far)[1] == "numeric" && far > 0 && far <= 1) {
     far <- far
   } else{
     stop("far is not a positive scalar in the range (0,1]")
