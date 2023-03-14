@@ -31,7 +31,7 @@
 hysime <- function(x, noisetype)
 
 {
-  if if (class(x)[1] != "RasterStack" & class(x)[1] != "matrix" & class(x)[1] !="RasterBrick") {
+  if if (class(x)[1] != "RasterStack" && class(x)[1] != "matrix" && class(x)[1] !="RasterBrick") {
     stop("x is not a matrix or raster")
   }
 
