@@ -51,7 +51,7 @@ hfcvd <- function(x, noisewhiten, far)
   }
 
 
-  if (class(far)[1] == "numeric" && far > 0 && far <= 1) {
+  if (class(far)[1] == "numeric" & far > 0 & far <= 1) {
     far <- far
   } else{
     stop("far is not a positive scalar in the range (0,1]")
