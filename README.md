@@ -12,10 +12,10 @@ as proposed by Rossi and Gholizadeh (2023).
 
 ## Main features
 
-* Virtual dimensionality HySime and NWHFC
-* PPI and VCA
+* Virtual dimensionality (i.e., the number of endmembers) using the HySime and NWHFC
+* PPI and VCA to find the spectral signature of the endmembers
 * Linear unmixing with three options (ucls — Unconstrained least-squares method, fcls — Fully constrained least-squares method, 
-ncls — Nonnegative constrained least-squares method)
+ncls — Nonnegative constrained least-squares method) to estimate the endmember abundance per pixel
 * Spectral diversity of a pixel as the endmember diversity
 
 
