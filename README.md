@@ -16,7 +16,7 @@ as proposed by Rossi and Gholizadeh (2023).
 * PPI and VCA
 * Linear unmixing with three options (ucls — Unconstrained least-squares method, fcls — Fully constrained least-squares method, 
 ncls — Nonnegative constrained least-squares method)
-* Spectral diversity of a pixel from the endmember diversity
+* Spectral diversity of a pixel as the endmember diversity
 
 
 ## Installation
