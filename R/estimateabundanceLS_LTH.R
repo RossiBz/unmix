@@ -59,6 +59,7 @@ estimateabundanceLS <- function(x, endmembers, method)
    p <- dim(Ma)[2]
 
    #number of endmembers
+   # I think this should be: q <- dim(endmembers)[2]
    q <- size(endmembers)[2]
 
 
