@@ -46,6 +46,11 @@ estimateabundanceLS <- function(x, endmembers, method)
       stop("x is not a matrix or raster")
    }
 
+
+if (class(endmembers)[1] != "matrix") {
+      stop("endmembers need to be a matrix")
+   }
+
    if (missing(method))
    {
       method <- "fcls"
