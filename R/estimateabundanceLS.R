@@ -50,8 +50,14 @@ estimateabundanceLS <- function(x, endmembers, method)
    {
       method <- "fcls"
    }
-
   
+  #divide by 10000 to avoid overflow errors due to large numbers 
+  
+  if (mean(Ma,na.rm=TRUE)>10)
+  {
+  MA <- MA/10000
+  endmembers <- endmembers/10000
+  }
 
    # columns are bands
    # rows are signals
@@ -101,8 +107,7 @@ estimateabundanceLS <- function(x, endmembers, method)
    } else if (method == "fcls") {
       for (i in 1:N)
       {
-         #divide by 10000 to avoid overflow errors due to large numbers
-
+        
          if (anyNA(Ma[i,]))
          {
             abundanceMapTemp[, i] <- NA
