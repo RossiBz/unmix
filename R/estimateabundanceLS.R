@@ -70,7 +70,7 @@ estimateabundanceLS <- function(x, endmembers, method)
 
    if(q >= p)
    {
-   stop("Error: You have more endmembers than bands")
+   stop("Error: The numbers of endmembers equals o is greater than the number of bands")
    }
    abundanceMapTemp <- matrix(nrow = q, ncol = N, 0)
 
