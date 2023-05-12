@@ -47,7 +47,7 @@ estimateabundanceLS <- function(x, endmembers, method)
    }
 
 
-if (class(endmembers)[1] != "matrix") {
+   if (class(endmembers)[1] != "matrix") {
       stop("endmembers need to be a matrix")
    }
 
