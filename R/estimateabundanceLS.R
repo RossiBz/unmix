@@ -101,7 +101,7 @@ estimateabundanceLS <- function(x, endmembers, method)
    } else if (method == "fcls") {
       for (i in 1:N)
       {
-         #divide by 10000 to avoid overflow error due to large numbers
+         #divide by 10000 to avoid overflow errors due to large numbers
 
          if (anyNA(Ma[i,]))
          {
