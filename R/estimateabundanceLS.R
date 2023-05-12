@@ -51,7 +51,7 @@ estimateabundanceLS <- function(x, endmembers, method)
       method <- "fcls"
    }
 
-
+  
 
    # columns are bands
    # rows are signals
@@ -59,10 +59,13 @@ estimateabundanceLS <- function(x, endmembers, method)
    p <- dim(Ma)[2]
 
    #number of endmembers
-   # I think this should be: q <- dim(endmembers)[2]
-   q <- size(endmembers)[2]
+  
+   q <- dim(endmembers)[2]
 
-
+   if(q >= p)
+   {
+   stop("Error: You have more endmembers than bands")
+   }
    abundanceMapTemp <- matrix(nrow = q, ncol = N, 0)
 
    if (method == "ucls")
