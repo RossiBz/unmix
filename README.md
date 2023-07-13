@@ -28,9 +28,9 @@ install_github("RossiBz/unmix")
 ```
 
 
-## Authors
+## Author
 
-* Christian Rossi
+* Christian Rossi christian.rossi1990@gmail.com
 
 ## License
 
