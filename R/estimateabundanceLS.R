@@ -60,7 +60,7 @@ estimateabundanceLS <- function(x, endmembers, method)
   
   if (mean(Ma,na.rm=TRUE)>10)
   {
-  MA <- MA/10000
+  Ma <- Ma/10000
   endmembers <- endmembers/10000
   }
 
