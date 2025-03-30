@@ -115,7 +115,7 @@ hysime <- function(x, noisetype)
   dx <- E_D$d
 
   #Estimating the number of endmembers
-  Rn <- u_Ru[[2]] + sum(diag(Rx)) / p / 10 ^ 5 * pracma::eye(p)
+  Rn <- u_Ru[[2]] + sum(diag(Rx)) / p / 10 ^ 4 * pracma::eye(p)
 
   Py <- diag(t(E_D$u) %*% Ry %*% E_D$u)
   Pn <- diag(t(E_D$u) %*% Rn %*% E_D$u)
